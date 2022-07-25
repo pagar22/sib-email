@@ -1,0 +1,29 @@
+{
+  "name": "sib_email",
+  "version": "1.0.0",
+  "description": "app for sending transactional emails and email campaigns",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "4.17.1",
+    "sib-api-v3-sdk": "^8.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.19"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pagar22/sib_emailer.git"
+  },
+  "author": "pagar22",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pagar22/sib_emailer/issues"
+  },
+  "homepage": "https://github.com/pagar22/sib_emailer#readme"
+}
