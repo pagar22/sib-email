@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "node index.test.js"
+    "test": "jest"
   },
   "dependencies": {
     "dotenv": "^16.0.1",
