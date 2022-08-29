@@ -19,5 +19,5 @@ jobs:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
       uses: pullreminders/slack-action@master
       with:
-        args: '{\"channel\":\"C0405BTFA59\",\"text\":\"<${{github.event}}>\"}'
+        args: '{\"channel\":\"C0405BTFA59\",\"text\":\"<${{github.event.commit_comment}}>\"}'
  
