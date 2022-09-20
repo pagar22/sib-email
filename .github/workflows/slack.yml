@@ -17,7 +17,7 @@ jobs:
         uses: pullreminders/slack-action@master
         with:
           # Remove 'SPAM-' from channel ID to resume notifications
-          args: '{\"channel\":\"C0405BTFA59\",\"text\":\github.event}'
+          args: '{\"channel\":\"C0405BTFA59\",\"text\":\"github.event"}'
 
   notify_on_merge:
     runs-on: ubuntu-latest
