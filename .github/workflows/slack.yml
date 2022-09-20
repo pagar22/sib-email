@@ -2,10 +2,10 @@ name: Slack
 
 on:
   push:
-    branches-ignore: ["main"]
-  pull_request:
-    types: closed
     branches: ["main"]
+#   pull_request:
+#     types: closed
+#     branches: ["main"]
 
 jobs:
   slack:
@@ -17,10 +17,9 @@ jobs:
         uses: pullreminders/slack-action@master
         with:
           # Remove 'SPAM-' from channel ID to resume notifications
-          args: '{\"channel\":\"C0405BTFA59\",\"text\":\"Playwright Integration has had recent pushes! 😎\"}'
+          args: '{\"channel\":\"C0405BTFA59\",\"text\":\github.event}'
 
   notify_on_merge:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Notify on merge 🔗
