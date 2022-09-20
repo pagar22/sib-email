@@ -17,7 +17,7 @@ jobs:
           args: '{\"channel\":\"C0405BTFA59\",\"text\":\"$GITHUB\"}'
 
   notify_on_merge:
-    if: ${{ $GITHUB.pull_request.state == 'open' }}
+    if: $GITHUB.pull_request.state == "open"
     runs-on: ubuntu-latest
     steps:
       - name: Notify on merge 🔗
