@@ -1,23 +1,32 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Slack
 
 on:
   push:
-    branches: [ "master" ]
+    branches-ignore: ["main"]
+  pull_request:
+    types: closed
+    branches: ["main"]
 
 jobs:
-  # This workflow contains a single job called "build"
   slack:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - name: Notify slack
-      env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      uses: pullreminders/slack-action@master
-      with:
-        args: '{\"channel\":\"C0405BTFA59\",\"text\":\"<${{github.event.commit_comment.url}}>\"}'
- 
+      - name: Notify slack 🔔
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: pullreminders/slack-action@master
+        with:
+          # Remove 'SPAM-' from channel ID to resume notifications
+          args: '{\"channel\":\"C0405BTFA59\",\"text\":\"Playwright Integration has had recent pushes! 😎\"}'
+
+  notify_on_merge:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify on merge 🔗
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: pullreminders/slack-action@master
+        with:
+          # Remove 'SPAM-' from channel ID to resume notifications
+          args: '{\"channel\":\"C0405BTFA59\",\"text\":\"A PR was recently merged to development! 🥳\"}'
