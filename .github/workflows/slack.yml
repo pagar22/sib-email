@@ -16,14 +16,14 @@ jobs:
           # Remove 'SPAM-' from channel ID to resume notifications
           args: '{\"channel\":\"C0405BTFA59\",\"text\":\"$GITHUB\"}'
 
-  notify_on_merge:
-    if: $GITHUB.pull_request.state == "open"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Notify on merge 🔗
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        uses: pullreminders/slack-action@master
-        with:
-          # Remove 'SPAM-' from channel ID to resume notifications
-          args: '{\"channel\":\"C0405BTFA59\",\"text\":\"A PR was recently merged to development! 🥳\"}'
+  # notify_on_merge:
+    # if: $GITHUB.pull_request.state == "open"
+    #runs-on: ubuntu-latest
+    #steps:
+     # - name: Notify on merge 🔗
+      #  env:
+       #   SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        #uses: pullreminders/slack-action@master
+        #with:
+         # # Remove 'SPAM-' from channel ID to resume notifications
+          #args: '{\"channel\":\"C0405BTFA59\",\"text\":\"A PR was recently merged to development! 🥳\"}'
