@@ -20,7 +20,6 @@ jobs:
           args: '{\"channel\":\"C0405BTFA59\",\"text\":\"Playwright Integration has had recent pushes! 😎\"}'
 
   notify_on_merge:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Notify on merge 🔗
