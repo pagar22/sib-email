@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: ["master"]
 env: 
-  GITHUB: ${{ toJson(github). }}
+  GITHUB: ${{ toJson(github) }}
 jobs:
   slack:
     runs-on: ubuntu-latest
