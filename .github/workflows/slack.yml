@@ -1,12 +1,10 @@
 name: Slack
 
 on:
-  push:
-    branches: ["master"]
-#   pull_request:
-#     types: closed
-#     branches: ["main"]
-
+  pull_request:
+    branches: ["main"]
+env: 
+  GITHUB: ${{ toJson(github). }}
 jobs:
   slack:
     runs-on: ubuntu-latest
@@ -17,9 +15,10 @@ jobs:
         uses: pullreminders/slack-action@master
         with:
           # Remove 'SPAM-' from channel ID to resume notifications
-          args: '{\"channel\":\"C0405BTFA59\",\"text\":\"${{ toJson(github) }}\"}'
+          args: '{\"channel\":\"C0405BTFA59\",\"text\":\"${{env.GITHUB}}\"}'
 
   notify_on_merge:
+    if: ${{ env.GITHUB.pull_request.state == 'open' }}
     runs-on: ubuntu-latest
     steps:
       - name: Notify on merge 🔗
