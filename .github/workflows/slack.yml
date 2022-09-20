@@ -2,7 +2,7 @@ name: Slack
 
 on:
   pull_request:
-    branches: ["main"]
+    branches: ["master"]
 env: 
   GITHUB: ${{ toJson(github). }}
 jobs:
