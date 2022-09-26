@@ -14,4 +14,4 @@ jobs:
         uses: pullreminders/slack-action@master
         with:
           # Remove 'SPAM-' from channel ID to resume notifications
-          args: '{\"channel\":\"C0405BTFA59\",\"text\":\"${{ toJson(github) }}\"}'
+          args: '{\"channel\":\"SPAM-C0405BTFA59\",\"text\":\"${{ toJson(github) }}\"}'
