@@ -15,7 +15,11 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           GITHUB: ${{ toJson(github) }}
+          MESSAGE: |
+            ### Heading
+            * Bullet
+            * Points
         uses: pullreminders/slack-action@master
         with:
           # Remove 'SPAM-' from channel ID to resume notifications
-          args: '{\"channel\":\"C0405BTFA59\",\"text\":\"${{ GITHUB.triggering_actor }} has just merged ${{ GITHUB.actor }}&apos;s pull request ${{ GITHUB.event.number }} from ${{ GITHUB.head_ref }} to ${{ GITHUB.base_ref }}\"}'
+          args: '{\"channel\":\"C0405BTFA59\",\"text\":\"${{ MESSAGE }}\"}'
