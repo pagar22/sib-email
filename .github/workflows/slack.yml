@@ -1,25 +1,16 @@
 name: Slack
 
 on:
-  push:
+  pull_request:
+    types: 
+      - closed
     branches: ["master"]
-#   pull_request:
-#     types: closed
-#     branches: ["main"]
+#   push:
+#     branches: ["master"]
 
 jobs:
-  slack:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Notify slack 🔔
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        uses: pullreminders/slack-action@master
-        with:
-          # Remove 'SPAM-' from channel ID to resume notifications
-          args: '{\"channel\":\"C0405BTFA59\",\"text\":\"${{ toJson(github) }}\"}'
-
   notify_on_merge:
+    if: github.event.pull_request.merged == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Notify on merge 🔗
@@ -29,3 +20,13 @@ jobs:
         with:
           # Remove 'SPAM-' from channel ID to resume notifications
           args: '{\"channel\":\"C0405BTFA59\",\"text\":\"A PR was recently merged to development! 🥳\"}'
+#   slack:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Notify slack 🔔
+#         env:
+#           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+#         uses: pullreminders/slack-action@master
+#         with:
+#           # Remove 'SPAM-' from channel ID to resume notifications
+#           args: '{\"channel\":\"C0405BTFA59\",\"text\":\"${{ toJson(github) }}\"}'
