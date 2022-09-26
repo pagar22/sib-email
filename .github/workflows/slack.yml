@@ -2,28 +2,31 @@ name: Slack
 
 on:
   pull_request:
+    types: 
+      - closed
     branches: ["master"]
-    
+#   push:
+#     branches: ["master"]
+
 jobs:
-  slack:
+  notify_on_merge:
+    if: github.event.pull_request.merged == 'true'
     runs-on: ubuntu-latest
     steps:
-      - name: Notify slack 🔔
+      - name: Notify on merge 🔗
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         uses: pullreminders/slack-action@master
         with:
           # Remove 'SPAM-' from channel ID to resume notifications
-          args: '{\"channel\":\"C0405BTFA59\",\"text\":\"$GITHUB\"}'
-
-  # notify_on_merge:
-    # if: $GITHUB.pull_request.state == "open"
-    #runs-on: ubuntu-latest
-    #steps:
-     # - name: Notify on merge 🔗
-      #  env:
-       #   SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        #uses: pullreminders/slack-action@master
-        #with:
-         # # Remove 'SPAM-' from channel ID to resume notifications
-          #args: '{\"channel\":\"C0405BTFA59\",\"text\":\"A PR was recently merged to development! 🥳\"}'
+          args: '{\"channel\":\"C0405BTFA59\",\"text\":\"A PR was recently merged to development! 🥳\"}'
+#   slack:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Notify slack 🔔
+#         env:
+#           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+#         uses: pullreminders/slack-action@master
+#         with:
+#           # Remove 'SPAM-' from channel ID to resume notifications
+#           args: '{\"channel\":\"C0405BTFA59\",\"text\":\"${{ toJson(github) }}\"}'
