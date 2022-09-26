@@ -25,7 +25,7 @@ app.post("/sendemail", (req, resp, next) => {
     apiInstance.createContact(createContact).then((data) => {
         resp.status(200)
         console.log(data)
-        resp.send("success!")
+        resp.send("success! =)")
     }, function (error) {
         resp.status(500)
         console.log(error)
