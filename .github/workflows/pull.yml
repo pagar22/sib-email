@@ -1,3 +1,5 @@
+name: On Pull
+
 on:
   pull_request:
     types:
@@ -8,5 +10,10 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        echo The PR was merged
+      - name: Notify on merge 🔗
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: pullreminders/slack-action@master
+        with:
+          # Remove 'SPAM-' from channel ID to resume notifications
+          args: '{\"channel\":\"C0405BTFA59\",\"text\":\"A PR was recently merged to development! 🥳\"}'
