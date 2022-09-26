@@ -18,6 +18,6 @@ jobs:
         with:
           # Remove 'SPAM-' from channel ID to resume notifications
           args: '{\"channel\":\"C0405BTFA59\",\"text\":\ "
-                Helloo dev team! \n
+                Hello dev team! \n
                 ${{ GITHUB.triggering_actor }} has just merged pull request ${{ GITHUB.event.number }} created
                 by ${{ GITHUB.actor }} from ${{ GITHUB.head_ref }} onto ${{ GITHUB.base_ref }}\"}'
