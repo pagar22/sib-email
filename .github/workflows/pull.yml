@@ -18,4 +18,5 @@ jobs:
         uses: pullreminders/slack-action@master
         with:
           # Remove 'SPAM-' from channel ID to resume notifications
-          args: '{\"channel\":\"C0405BTFA59\",\"text\":\"A PR was recently merged to development! 🥳 $GITHUB.triggering_actor\"}'
+          args: '{\"channel\":\"C0405BTFA59\",\"text\":\"${{ GITHUB.triggering_actor }} has just merged pull request ${{ GITHUB.event.number }} created" 
+            > "by ${{ GITHUB.actor }} from ${{ GITHUB.head_ref }} onto ${{ GITHUB.base_ref }}\"}'
