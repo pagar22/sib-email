@@ -16,4 +16,4 @@ jobs:
         with:
           # Remove 'SPAM-' from channel ID to resume notifications
           args:
-            '{\"channel\":\"C0405BTFA59\",\"text\":\"${{ github }}\"}'
+            '{\"channel\":\"C0405BTFA59\",\"text\":\"${{ toJson(github) }}\"}'
