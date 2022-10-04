@@ -1,17 +1,23 @@
-name: Slack
+name: On Pull
 
 on:
   push:
     branches: ["master"]
+  
 
 jobs:
-  slack:
+  if_merged:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - name: Notify slack 🔔
+      - name: Notify on merge 🔗
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         uses: pullreminders/slack-action@master
         with:
           # Remove 'SPAM-' from channel ID to resume notifications
-          args: '{\"channel\":\"SPAM-C0405BTFA59\",\"text\":\"${{ toJson(github) }}\"}'
+          args:
+            '{\"channel\":\"C0405BTFA59\",\"text\":\"Dev Teaaam 🔥 ${{ GITHUB.triggering_actor }}
+            "has just merged pull request ${{ GITHUB.event.number }}
+            "created by ${{ GITHUB.event }} from ${{ GITHUB.head_ref }} onto ${{ GITHUB.base_ref }}!
+            "Are we the best company in the world or what 💙\"}'
