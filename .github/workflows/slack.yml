@@ -7,7 +7,6 @@ on:
 
 jobs:
   if_merged:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Notify on merge 🔗
@@ -19,5 +18,5 @@ jobs:
           args:
             '{\"channel\":\"C0405BTFA59\",\"text\":\"Dev Teaaam 🔥 ${{ GITHUB.triggering_actor }}
             "has just merged pull request ${{ GITHUB.event.number }}
-            "created by ${{ GITHUB.event }} from ${{ GITHUB.head_ref }} onto ${{ GITHUB.base_ref }}!
+            "created by ${{ GITHUB.event.author.username }} from ${{ GITHUB.head_ref }} onto ${{ GITHUB.base_ref }}!
             "Are we the best company in the world or what 💙\"}'
