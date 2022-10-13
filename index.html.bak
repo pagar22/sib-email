@@ -5,7 +5,7 @@
         <title></title>
     </head>
     <body>
-        <h1>REGEX</h1>
+        <h1>SIB EMAILER</h1>
         <input id="email"></input>
         <button id="join">Join!</button>
 

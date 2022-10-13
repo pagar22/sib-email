@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "jest"
+    "test": "jest",
+    "index": "./custom_index.sh"
   },
   "dependencies": {
     "dotenv": "^16.0.1",
